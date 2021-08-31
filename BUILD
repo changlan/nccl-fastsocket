@@ -7,10 +7,16 @@ exports_files(["LICENSE"])
 
 cc_library(
     name = "nccl_utilities",
+    srcs = [
+        "utilities.cc",
+    ],
     hdrs = [
         "utilities.h",
     ],
     visibility = ["//visibility:public"],
+    deps = [
+        "@nccl//:plugin_lib",
+    ],
 )
 
 # Faster socket plugin for NCCL applications.

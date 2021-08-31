@@ -15,7 +15,7 @@
 
 #include "nccl_net.h"
 
-static ncclDebugLogger_t nccl_log_func;
+extern ncclDebugLogger_t nccl_log_func;
 
 #define WARN(fmt, ...)                                                  \
   (*nccl_log_func)(NCCL_LOG_WARN, NCCL_ALL, __PRETTY_FUNCTION__,        \
