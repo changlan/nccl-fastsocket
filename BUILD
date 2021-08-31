@@ -5,6 +5,14 @@ licenses(["notice"])
 
 exports_files(["LICENSE"])
 
+cc_library(
+    name = "nccl_utilities",
+    hdrs = [
+        "utilities.h",
+    ],
+    visibility = ["//visibility:public"],
+)
+
 # Faster socket plugin for NCCL applications.
 cc_library(
     name = "plugin",
@@ -14,7 +22,6 @@ cc_library(
     ],
     hdrs = [
         "compat.h",
-        "utilities.h",
     ],
     # Export the symbol containing the NCCL plugin vtable so it can be
     # loaded at runtime via dlopen + dlsym. This means we also need to
@@ -26,6 +33,7 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
     deps = [
+        ":nccl_utilities",
         "@nccl//:plugin_lib",
     ],
     alwayslink = 1,
